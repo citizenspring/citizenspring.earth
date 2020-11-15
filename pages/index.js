@@ -3,16 +3,6 @@ import { getHTMLFromGoogleDocId } from "../lib/googledoc";
 import Footer from "../components/Footer";
 import ErrorNotPublished from "../components/ErrorNotPublished";
 
-export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { docid: "1gEw7u-Fh3ZDhqy_qCzvyMKIHt7o9Ac584kcJQrEjceg" } },
-      { params: { docid: "1iT52-iZixBxFTsJjQo6SYAixaKtZIM5Gg3ZsAal6B4E" } },
-    ],
-    fallback: true,
-  };
-}
-
 export async function getStaticProps({ params }) {
   const googleDocId = "1gEw7u-Fh3ZDhqy_qCzvyMKIHt7o9Ac584kcJQrEjceg";
   const html = await getHTMLFromGoogleDocId(googleDocId);
