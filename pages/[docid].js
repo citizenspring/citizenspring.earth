@@ -29,11 +29,11 @@ export default function Home({ html, googleDocId }) {
   return (
     <div className="w-full">
       <Head>
-        <title>Playstreets Brussels</title>
+        <title>Citizen Spring 🌻</title>
         <link rel="icon" href="/favicon.png" />
         <meta
           name="description"
-          content="Participate in a play street in your neighborhood or organise one!"
+          content="Citizen initiatives to rebuild local communities"
         />
       </Head>
 
