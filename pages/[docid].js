@@ -14,11 +14,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const googleDocId = "1gEw7u-Fh3ZDhqy_qCzvyMKIHt7o9Ac584kcJQrEjceg";
-  const html = await getHTMLFromGoogleDocId(googleDocId);
+  const html = await getHTMLFromGoogleDocId(params.docid);
 
   return {
-    props: { html, googleDocId },
+    props: { html, googleDocId: params.docid },
     // we will attempt to re-generate the page:
     // - when a request comes in
     // - at most once every 180 seconds
