@@ -1,7 +1,13 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import fetch from "node-fetch";
+import { Box, Flex } from "@rebass/grid";
+import styled from "styled-components";
 
+const EditLink = styled.a`
+color: #555;
+font-size: 12px;
+`;
 const googledoc =
   "https://docs.google.com/document/d/e/2PACX-1vTjJlu5T5kU6kNRso9fiNK-8DP7pDgzQSd75MUkHWN9348CjNhGOKEe_iD1v_w-eBci0-b8Q-J0KQzv/pub?embedded=true";
 
@@ -52,7 +58,9 @@ export default function Home({ html }) {
       </main>
 
       <footer className={styles.footer}>
-        <a
+        <Flex flexDirection="row" width={1} justifyContent="space-between" alignItems="center">
+          <Box>
+          <a
           href="https://citizenspring.earth"
           target="_blank"
           rel="noopener noreferrer"
@@ -63,6 +71,12 @@ export default function Home({ html }) {
             className={styles.logo}
           />
         </a>
+
+          </Box>
+          <Box>
+            <EditLink href={googledoc} target="_blank">📝 Edit this page</EditLink>
+          </Box>
+        </Flex>
       </footer>
     </div>
   );
