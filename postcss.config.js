@@ -10,6 +10,7 @@ const purgecss = [
     defaultExtractor: (content) => {
       const arr = content.match(/[\w-/:]+(?<!:)/g) || [];
       arr.push("ul", "li");
+      console.log(">>> defaultExtractor", arr);
       return arr;
     },
   },
@@ -17,7 +18,7 @@ const purgecss = [
 module.exports = {
   plugins: [
     "tailwindcss",
-    process.env.NODE_ENV === "production" ? purgecss : undefined,
+    process.env.NODE_ENV !== "production" ? purgecss : undefined,
     "postcss-preset-env",
   ],
 };

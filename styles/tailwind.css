@@ -15,7 +15,7 @@ body {
 }
 
 a {
-  @apply no-underline text-green-700;
+  @apply no-underline text-green-700 !important;
 }
 
 a:hover {
@@ -32,7 +32,7 @@ h1 {
 
 h2,
 h3 {
-  @apply font-semibold mt-4 mb-2 text-2xl;
+  @apply font-semibold mt-8 mb-2 text-2xl;
 }
 
 h3 {
@@ -61,15 +61,5 @@ ul li {
 }
 
 .video {
-  @apply my-6 -mx-4;
+  @apply my-2 -mx-4;
 }
-
-/* .full-width {
-  width: 100vw;
-  max-width: 660px;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-} */

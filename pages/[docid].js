@@ -38,8 +38,11 @@ export default function Home({ html, googleDocId }) {
       </Head>
 
       <main className="max-w-screen-md px-4 mx-auto">
+        {!html && <p>Loading...</p>}
+        {html === "not_published" && (
+          <ErrorNotPublished googleDocId={googleDocId} />
+        )}
         {html && <div dangerouslySetInnerHTML={{ __html: html }} />}
-        {!html && <ErrorNotPublished googleDocId={googleDocId} />}
       </main>
 
       <Footer googleDocId={googleDocId} />
