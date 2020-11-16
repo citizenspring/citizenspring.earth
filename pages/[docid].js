@@ -42,7 +42,7 @@ export default function Home({ html, googleDocId }) {
         {!html && <ErrorNotPublished googleDocId={googleDocId} />}
       </main>
 
-      <Footer />
+      <Footer googleDocId={googleDocId} />
     </div>
   );
 }
