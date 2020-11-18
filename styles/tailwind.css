@@ -63,3 +63,8 @@ ul li {
 .video {
   @apply my-2 -mx-4;
 }
+
+img {
+  @apply my-2 -mx-4;
+  display: inline-block;
+}

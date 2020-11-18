@@ -10,7 +10,6 @@ const purgecss = [
     defaultExtractor: (content) => {
       const arr = content.match(/[\w-/:]+(?<!:)/g) || [];
       arr.push("ul", "li");
-      console.log(">>> defaultExtractor", arr);
       return arr;
     },
   },

@@ -2,6 +2,7 @@ import Head from "next/head";
 import { getHTMLFromGoogleDocId } from "../lib/googledoc";
 import Footer from "../components/Footer";
 import ErrorNotPublished from "../components/ErrorNotPublished";
+import RenderGoogleDoc from "../components/RenderGoogleDoc";
 
 export async function getStaticPaths() {
   return {
@@ -42,7 +43,7 @@ export default function Home({ html, googleDocId }) {
         {html === "not_published" && (
           <ErrorNotPublished googleDocId={googleDocId} />
         )}
-        {html && <div dangerouslySetInnerHTML={{ __html: html }} />}
+        {html && <RenderGoogleDoc html={html} />}
       </main>
 
       <Footer googleDocId={googleDocId} />
