@@ -48,6 +48,12 @@ hr {
   margin: 3rem 0 2rem 0;
 }
 
+div.pagebreak {
+  border-top: 1px solid;
+  @apply border-green-300 my-12 w-full;
+  height: 1px;
+}
+
 * {
   box-sizing: border-box;
 }

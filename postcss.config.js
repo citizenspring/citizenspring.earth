@@ -9,7 +9,7 @@ const purgecss = [
     // This is the function used to extract class names from the templates
     defaultExtractor: (content) => {
       const arr = content.match(/[\w-/:]+(?<!:)/g) || [];
-      arr.push("ul", "li");
+      arr.push("ul", "li", "pagebreak");
       return arr;
     },
   },
@@ -17,7 +17,7 @@ const purgecss = [
 module.exports = {
   plugins: [
     "tailwindcss",
-    process.env.NODE_ENV !== "production" ? purgecss : undefined,
+    process.env.NODE_ENV === "production" ? purgecss : undefined,
     "postcss-preset-env",
   ],
 };
