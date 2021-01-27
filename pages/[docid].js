@@ -4,21 +4,34 @@ import Footer from "../components/Footer";
 import ErrorNotPublished from "../components/ErrorNotPublished";
 import RenderGoogleDoc from "../components/RenderGoogleDoc";
 
+const aliases = {
+  about: "1iT52-iZixBxFTsJjQo6SYAixaKtZIM5Gg3ZsAal6B4E",
+  faq: "1gEw7u-Fh3ZDhqy_qCzvyMKIHt7o9Ac584kcJQrEjceg",
+  academy: "1Ru5vxtTuOQOsOldapez1DaLUBatQjdf2tXI_WCrRrz8",
+  "academy/faq": "1fU9NWBlGym-as1UFmntSon8gLYRK-BIHVSyapIREez8",
+};
+
 export async function getStaticPaths() {
+  const paths = [];
+  Object.keys(aliases).forEach((key) => {
+    paths.push({
+      params: {
+        docid: aliases[key],
+      },
+    });
+  });
+
   return {
-    paths: [
-      { params: { docid: "1gEw7u-Fh3ZDhqy_qCzvyMKIHt7o9Ac584kcJQrEjceg" } },
-      { params: { docid: "1iT52-iZixBxFTsJjQo6SYAixaKtZIM5Gg3ZsAal6B4E" } },
-    ],
+    paths,
     fallback: true,
   };
 }
 
 export async function getStaticProps({ params }) {
-  const html = await getHTMLFromGoogleDocId(params.docid);
-
+  const googleDocId = aliases[params.docid.toLowerCase()] || params.docid;
+  const html = await getHTMLFromGoogleDocId(googleDocId);
   return {
-    props: { html, googleDocId: params.docid },
+    props: { html, googleDocId },
     // we will attempt to re-generate the page:
     // - when a request comes in
     // - at most once every 180 seconds
