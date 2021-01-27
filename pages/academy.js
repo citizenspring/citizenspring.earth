@@ -24,11 +24,11 @@ export default class Home extends React.Component {
     return (
       <div className="w-full">
         <Head>
-          <title>Citizen Spring 🌻</title>
+          <title>Citizen Spring Academy 🌱🌻</title>
           <link rel="icon" href="/favicon.png" />
           <meta
             name="description"
-            content="Citizen initiatives to rebuild local communities"
+            content="Get €5.000 and a fellow citizen entrepreneur as a mentor to help you start a new sustainable place in Brussels"
           />
         </Head>
 
