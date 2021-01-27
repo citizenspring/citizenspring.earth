@@ -1,6 +1,6 @@
 {
-  "name": "playstreets.brussels",
-  "version": "0.1.0",
+  "name": "citizenspring.earth",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,7 @@
     "@condenast/xml-to-react": "^1.0.0",
     "@fullhuman/postcss-purgecss": "^3.0.0",
     "cheerio": "^1.0.0-rc.3",
-    "next": "^10.0.1",
+    "next": "^10.0.5",
     "node-fetch": "^2.6.1",
     "postcss-preset-env": "^6.7.0",
     "react": "^17.0.1",
