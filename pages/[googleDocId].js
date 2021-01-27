@@ -17,21 +17,23 @@ const pages = {
   academy: {
     title: "Citizen Spring Academy 🌱🌻",
     description:
-      "Get €5.000 and a fellow citizen entrepreneur as a mentor to help you start a sustainable place in Brussels",
+      "Get €5.000 to start a new sustainable place in Brussels with the help of a fellow citizen entrepreneur.",
     googleDocId: "1Ru5vxtTuOQOsOldapez1DaLUBatQjdf2tXI_WCrRrz8",
-    image: "https://citizenspring.earth/citizenspring-academy.png",
+    image: "https://citizenspring.earth/citizenspring-academy-fb.png",
   },
   "academy/faq": {
     title: "Citizen Spring Academy 🌱🌻 FAQ",
     description:
-      "Get €5.000 and a fellow citizen entrepreneur as a mentor to help you start a sustainable place in Brussels",
+      "Get €5.000 to start a new sustainable place in Brussels with the help of a fellow citizen entrepreneur.",
     googleDocId: "1fU9NWBlGym-as1UFmntSon8gLYRK-BIHVSyapIREez8",
+    image: "https://citizenspring.earth/citizenspring-academy-fb.png",
   },
   "academy/about": {
     title: "Citizen Spring Academy 🌱🌻 About",
     description:
-      "Get €5.000 and a fellow citizen entrepreneur as a mentor to help you start a sustainable place in Brussels",
+      "Get €5.000 to start a new sustainable place in Brussels with the help of a fellow citizen entrepreneur.",
     googleDocId: "1Nl9JsoDPHHGtoQAHWaY-7GAsrTur8XixemGZsIKb9Vs",
+    image: "https://citizenspring.earth/citizenspring-academy-fb.png",
   },
 };
 
