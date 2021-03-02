@@ -55,22 +55,32 @@ export async function getStaticPaths() {
 
 function getPageInfo(param) {
   let pageInfo = pages[param.toLowerCase()];
-  if (pageInfo) return pageInfo;
-  // search by param
-  Object.keys(pages).forEach((key) => {
-    if (pages[key].googleDocId === param) {
-      pageInfo = pages[key];
-    }
-  });
+  if (!pageInfo) {
+    // search by param
+    Object.keys(pages).forEach((key) => {
+      if (pages[key].googleDocId === param) {
+        pageInfo = pages[key];
+      }
+    });
+  }
   return pageInfo || {};
 }
 
 export async function getStaticProps({ params }) {
   const pageInfo = getPageInfo(params.googleDocId);
-  pageInfo.googleDocId = pageInfo.googleDocId || params.googleDocId;
-  const html = await getHTMLFromGoogleDocId(pageInfo.googleDocId);
+  const googleDocId = pageInfo.googleDocId || params.googleDocId;
+  const doc = await getHTMLFromGoogleDocId(googleDocId);
+
+  const page = {
+    title: pageInfo.title || doc.title || null,
+    description: pageInfo.description || doc.description || null,
+    image: pageInfo.image || null,
+    body: doc.body,
+    googleDocId,
+  };
+
   return {
-    props: { html, pageInfo },
+    props: { page },
     // we will attempt to re-generate the page:
     // - when a request comes in
     // - at most once every 180 seconds
@@ -78,29 +88,30 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function Home({ html, pageInfo }) {
-  if (!pageInfo) return <div />;
+export default function Home({ page }) {
+  if (!page) return <div />;
+  const { title, description, body, image, googleDocId } = page;
   return (
     <div className="w-full">
       <Head>
-        <title>{pageInfo.title || defaultValues.title}</title>
+        <title>{title || defaultValues.title}</title>
         <link rel="icon" href="/favicon.png" />
         <meta
           name="description"
-          content={pageInfo.description || defaultValues.description}
+          content={description || defaultValues.description}
         />
-        <meta name="og:image" content={pageInfo.image || defaultValues.image} />
+        <meta name="og:image" content={image || defaultValues.image} />
       </Head>
 
       <main className="max-w-screen-md px-4 mx-auto">
-        {!html && <p>Loading...</p>}
-        {html === "not_published" && (
-          <ErrorNotPublished googleDocId={pageInfo.googleDocId} />
+        {!body && <p>Loading...</p>}
+        {body === "not_published" && (
+          <ErrorNotPublished googleDocId={googleDocId} />
         )}
-        {html && <RenderGoogleDoc html={html} />}
+        {body && <RenderGoogleDoc html={body} />}
       </main>
 
-      <Footer googleDocId={pageInfo.googleDocId} />
+      <Footer googleDocId={googleDocId} />
     </div>
   );
 }

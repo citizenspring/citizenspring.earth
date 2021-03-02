@@ -7,10 +7,10 @@ import RenderGoogleDoc from "../components/RenderGoogleDoc";
 
 export async function getStaticProps({ params }) {
   const googleDocId = "1gEw7u-Fh3ZDhqy_qCzvyMKIHt7o9Ac584kcJQrEjceg";
-  const html = await getHTMLFromGoogleDocId(googleDocId);
+  const page = await getHTMLFromGoogleDocId(googleDocId);
 
   return {
-    props: { html, googleDocId },
+    props: { page, googleDocId },
     // we will attempt to re-generate the page:
     // - when a request comes in
     // - at most once every 180 seconds
@@ -20,7 +20,7 @@ export async function getStaticProps({ params }) {
 
 export default class Home extends React.Component {
   render() {
-    const { html, googleDocId } = this.props;
+    const { page, googleDocId } = this.props;
     return (
       <div className="w-full">
         <Head>
@@ -33,11 +33,11 @@ export default class Home extends React.Component {
         </Head>
 
         <main className="max-w-screen-md px-4 mx-auto">
-          {!html && <p>Loading...</p>}
-          {html === "not_published" && (
+          {!page.body && <p>Loading...</p>}
+          {page.body === "not_published" && (
             <ErrorNotPublished googleDocId={googleDocId} />
           )}
-          {html && <RenderGoogleDoc html={html} />}
+          {page.body && <RenderGoogleDoc html={page.body} />}
         </main>
 
         <Footer googleDocId={googleDocId} />
