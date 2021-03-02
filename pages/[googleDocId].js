@@ -35,6 +35,7 @@ const pages = {
     googleDocId: "1Nl9JsoDPHHGtoQAHWaY-7GAsrTur8XixemGZsIKb9Vs",
     image: "https://citizenspring.earth/citizenspring-academy-fb.png",
   },
+  house: { googleDocId: "16SdrHEPc6UvyNbROeksQrFjeMSIJs_aK-mN40cjsPe8" },
 };
 
 export async function getStaticPaths() {
