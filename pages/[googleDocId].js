@@ -14,6 +14,18 @@ const defaultValues = {
 const pages = {
   about: { googleDocId: "1iT52-iZixBxFTsJjQo6SYAixaKtZIM5Gg3ZsAal6B4E" },
   faq: { googleDocId: "1gEw7u-Fh3ZDhqy_qCzvyMKIHt7o9Ac584kcJQrEjceg" },
+  citizenbikegarden: {
+    description:
+      "A citizen initiative to build a bike shed with a community garden and a blackboard to communicate with neighbors",
+    googleDocId: "1U_Yxqb2UyE0_47d6SeD_k79fkLZmOtLn8XTPAuuNBsA",
+  },
+  citizengarden: {
+    title: "Citizen Garden",
+    description:
+      "A tiny community garden trying to find its place in a city made for cars",
+    googleDocId:
+      "https://citizenspring.earth/1_GPtdLQ2hx-fGCjvRC9dlSZ2Qdd8od5ap5IsJ909EuE",
+  },
   academy: {
     title: "Citizen Spring Academy 🌱🌻",
     description:
