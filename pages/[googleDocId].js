@@ -23,8 +23,7 @@ const pages = {
     title: "Citizen Garden",
     description:
       "A tiny community garden trying to find its place in a city made for cars",
-    googleDocId:
-      "https://citizenspring.earth/1_GPtdLQ2hx-fGCjvRC9dlSZ2Qdd8od5ap5IsJ909EuE",
+    googleDocId: "1_GPtdLQ2hx-fGCjvRC9dlSZ2Qdd8od5ap5IsJ909EuE",
   },
   academy: {
     title: "Citizen Spring Academy 🌱🌻",
