@@ -57,8 +57,13 @@ export async function getStaticPaths() {
         googleDocId: pages[key].googleDocId,
       },
     });
+    paths.push({
+      params: {
+        googleDocId: key,
+      },
+    });
   });
-
+  console.log(paths);
   return {
     paths,
     fallback: true,
