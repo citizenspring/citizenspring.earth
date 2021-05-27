@@ -47,6 +47,13 @@ const pages = {
     image: "https://citizenspring.earth/citizenspring-academy-fb.png",
   },
   house: { googleDocId: "16SdrHEPc6UvyNbROeksQrFjeMSIJs_aK-mN40cjsPe8" },
+  corner: {
+    title: "Citizen Corner 🌱🌻 ",
+    description:
+      "A place in Schaerbeek, Brussels, for citizens to meet, learn and co-create.",
+    googleDocId: "1Gpq1Jzb7GBK9YQqgKnP8K8ShU3IPPWfD93qmrepQPm4",
+    image: "https://citizenspring.earth/citizencorner-building.jpg",
+  },
 };
 
 export async function getStaticPaths() {
