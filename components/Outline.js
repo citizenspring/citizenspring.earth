@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { getPageMetadata } from "../lib/lib";
 
 function Outline({ outline, onChange }) {
-  if (!outline || !outline.length || outline.length < 10) return null;
+  if (!outline || !outline.length || outline.length < 8) return null;
   const [isActive, setActive] = useState(false);
 
   function toggleMenu() {
@@ -12,6 +13,8 @@ function Outline({ outline, onChange }) {
     window.scrollTo(0, 0);
     setActive(!isActive);
   }
+
+  const websiteInfo = getPageMetadata("index");
 
   return (
     <div id="outline">
@@ -66,7 +69,19 @@ function Outline({ outline, onChange }) {
       >
         <div className="md:min-h-screen md:overflow-y-auto pl-1 pb-8">
           <div className="sm:hidden absolute top-0 left-0 w-80 bg-gray-100/90 h-12"></div>
-          <h3 className="pl-3 pt-6">On this page</h3>
+          <Link href="/">
+            <a title="Back to homepage">
+              <div className="pl-3 pt-6 flex">
+                <img
+                  src={websiteInfo.favicon}
+                  alt="favicon"
+                  className="h-7 mt-8 ml-0 mr-2"
+                />
+                <h2>{websiteInfo.title}</h2>
+              </div>
+            </a>
+          </Link>
+          <h3 className="pl-3 pt-0">On this page</h3>
           {outline
             .filter((item) => item.level > 0)
             .map((item, i) => {
