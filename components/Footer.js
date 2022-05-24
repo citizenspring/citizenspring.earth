@@ -1,13 +1,12 @@
 const Footer = ({ googleDocId }) => (
-  <div className="footer mt-8 border-t border-gray-300 flex flex-row justify-between items-center w-screen max-w-screen-md mx-auto p-3">
+  <div className="footer mt-8 flex flex-row justify-between items-center w-screen max-w-screen-md mx-auto p-3">
     <div>
       <a
         href="https://citizenspring.earth"
-        target="_blank"
-        rel="noopener noreferrer"
+        title="Go back to citizenspring.earth"
       >
         <img
-          src="/citizenspring.svg"
+          src="/favicon.png"
           alt="Citizen Spring Logo"
           className="h-10 mx-0"
         />

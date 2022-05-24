@@ -4,9 +4,10 @@ import { getHTMLFromGoogleDocId } from "../lib/googledoc";
 import Footer from "../components/Footer";
 import ErrorNotPublished from "../components/ErrorNotPublished";
 import RenderGoogleDoc from "../components/RenderGoogleDoc";
+import sitemap from "../sitemap.json";
 
 export async function getStaticProps({ params }) {
-  const googleDocId = "1gEw7u-Fh3ZDhqy_qCzvyMKIHt7o9Ac584kcJQrEjceg";
+  const googleDocId = sitemap.index.googleDocId;
   const page = await getHTMLFromGoogleDocId(googleDocId);
 
   return {
@@ -24,15 +25,13 @@ export default class Home extends React.Component {
     return (
       <div className="w-full">
         <Head>
-          <title>Citizen Spring 🌻</title>
-          <link rel="icon" href="/favicon.png" />
-          <meta
-            name="description"
-            content="Citizen initiatives to rebuild local communities"
-          />
+          <title>{sitemap.index.title}</title>
+          <link rel="icon" href={sitemap.index.favicon} />
+          <meta name="description" content={sitemap.index.description} />
+          <meta name="og:image" content={sitemap.index.image} />
         </Head>
 
-        <main className="max-w-screen-md px-4 mx-auto">
+        <main className="content max-w-screen-md px-4 mx-auto">
           {!page.body && <p>Loading...</p>}
           {page.body === "not_published" && (
             <ErrorNotPublished googleDocId={googleDocId} />

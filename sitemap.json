@@ -1,0 +1,51 @@
+{
+  "index": {
+    "title": "Citizen Spring 🌻",
+    "description": "Citizen initiatives to rebuild local communities",
+    "image":
+      "https://citizenspring.earth/citizenspring-logo-flower-transparent-medium.png",
+    "favicon": "/favicon.png",
+    "googleDocId": "1gEw7u-Fh3ZDhqy_qCzvyMKIHt7o9Ac584kcJQrEjceg"
+  },
+  "about": {
+    "googleDocId": "1iT52-iZixBxFTsJjQo6SYAixaKtZIM5Gg3ZsAal6B4E"
+  },
+  "faq": {
+    "googleDocId": "1oE7zKzwXV0V3ME5NWRDjENmRrqQKIFYIhPdCphsgYQA"
+  },
+  "citizenbikegarden": {
+    "description":
+      "A citizen initiative to build a bike shed with a community garden and a blackboard to communicate with neighbors",
+    "googleDocId": "1U_Yxqb2UyE0_47d6SeD_k79fkLZmOtLn8XTPAuuNBsA"
+  },
+  "citizengarden": {
+    "title": "Citizen Garden",
+    "description":
+      "A tiny community garden trying to find its place in a city made for cars",
+    "googleDocId": "1_GPtdLQ2hx-fGCjvRC9dlSZ2Qdd8od5ap5IsJ909EuE"
+  },
+  "academy": {
+    "title": "Citizen Spring Academy 🌱🌻",
+    "description":
+      "Get €5.000 to start a new sustainable place in Brussels with the help of a fellow citizen entrepreneur.",
+    "googleDocId": "1Ru5vxtTuOQOsOldapez1DaLUBatQjdf2tXI_WCrRrz8",
+    "image": "https://citizenspring.earth/citizenspring-academy-fb.png"
+  },
+  "house": {
+    "googleDocId": "16SdrHEPc6UvyNbROeksQrFjeMSIJs_aK-mN40cjsPe8"
+  },
+  "citizencorner": {
+    "title": "Citizen Corner 🌱🌻 ",
+    "description":
+      "A place in Schaerbeek, Brussels, for citizens to meet, learn and co-create.",
+    "googleDocId": "1Gpq1Jzb7GBK9YQqgKnP8K8ShU3IPPWfD93qmrepQPm4",
+    "image": "https://citizenspring.earth/citizencorner-building.jpg"
+  },
+  "cryptoart": {
+    "title": "Cryptoart Corner 🎨 💻",
+    "description":
+      "A place in the capital of europe to bring local artists to the crypto world",
+    "googleDocId": "13Q7o_jQUZXRpwgpj0r9_Gr0OGrFr9jhXouf2fY9QYGs",
+    "image": "https://citizenspring.earth/cryptoartcorner.webp"
+  }
+}

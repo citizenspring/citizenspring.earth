@@ -1,23 +1,35 @@
-const purgecss = [
-  "@fullhuman/postcss-purgecss",
-  {
-    // Specify the paths to all of the template files
-    content: [
-      "./pages/**/*.{js,jsx,ts,tsx}",
-      "./components/**/*.{js,jsx,ts,tsx}",
-    ],
-    // This is the function used to extract class names from the templates
-    defaultExtractor: (content) => {
-      const arr = content.match(/[\w-/:]+(?<!:)/g) || [];
-      arr.push("ul", "li", "pagebreak", "h1", "h2", "h3", "span", "a");
-      return arr;
-    },
-  },
-];
 module.exports = {
   plugins: [
+    // "tailwindcss/nesting",
     "tailwindcss",
-    process.env.NODE_ENV === "production" ? purgecss : undefined,
-    "postcss-preset-env",
+    [
+      "@fullhuman/postcss-purgecss",
+      process.env.NODE_ENV === "production"
+        ? {
+            // the paths to all template files
+            content: [
+              "./pages/**/*.{js,jsx,ts,tsx}",
+              "./components/**/*.{js,jsx,ts,tsx}",
+            ],
+            // function used to extract class names from the templates
+            defaultExtractor: (content) => {
+              const arr = content.match(/[\w-/:]+(?<!:)/g) || [];
+              arr.push(
+                "ul",
+                "li",
+                "pagebreak",
+                "p",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6"
+              );
+              return arr;
+            },
+          }
+        : false,
+    ],
   ],
 };

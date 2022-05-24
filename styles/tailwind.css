@@ -12,38 +12,55 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.5;
   color: #111;
+  font-size: 11pt;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#outline .active {
+  color: red;
 }
 
 span {
   font-size: 11pt;
 }
 
-a,
-span a {
-  text-decoration: none !important;
-  @apply no-underline text-green-700 !important;
+.content a,
+.content span a {
+  text-decoration: none;
+  @apply no-underline text-green-600;
 }
 
-a:hover {
-  @apply text-green-900;
+.content a:hover {
+  @apply text-green-800;
 }
 
-a:visited {
-  @apply text-green-600;
+.content a:visited {
+  @apply text-green-500;
 }
 
 h1 {
-  @apply text-3xl;
+  @apply text-3xl mt-8 mb-4;
 }
 
-h2,
-h3 {
-  @apply font-semibold mt-8 mb-2 text-2xl;
+h2, h2 span,
+h3, h3 span {
+  @apply font-normal mt-8 mb-2 text-2xl;
 }
 
 h3 {
   color: #333;
   @apply text-xl;
+}
+
+h4 {
+  @apply mt-6 mb-2;
+}
+
+h5 {
+  @apply mt-4 mb-1;
 }
 
 hr {
@@ -72,6 +89,15 @@ ul li {
   @apply list-disc ml-8 mt-1;
 }
 
+ol {
+  @apply px-8 my-2;
+  list-style: auto;
+}
+
+.imageWrapper.fullWidth {
+  @apply my-2 -mx-4;
+}
+
 .video {
   @apply my-2 -mx-4;
 }
@@ -79,4 +105,8 @@ ul li {
 img {
   @apply my-2 -mx-4;
   display: inline-block;
+}
+
+td {
+  @apply p-1;
 }
