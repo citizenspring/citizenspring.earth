@@ -12,26 +12,32 @@ import { useEffect, useState } from "react";
 const defaultValues = sitemap.index;
 
 export async function getStaticPaths() {
-  const paths = [];
+  const paths = [
+    {
+      params: {
+        path: [],
+      },
+    },
+  ];
   Object.keys(sitemap).forEach((key) => {
     if (key.match(/^collectives/)) return;
     paths.push({
       params: {
-        googleDocId: sitemap[key].googleDocId,
+        path: [sitemap[key].googleDocId],
       },
     });
     if (sitemap[key].aliases) {
       sitemap[key].aliases.map((alias) => {
         paths.push({
           params: {
-            googleDocId: alias,
+            path: [alias],
           },
         });
       });
     }
     paths.push({
       params: {
-        googleDocId: key,
+        path: [key],
       },
     });
   });
@@ -43,17 +49,51 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const pageInfo = getPageMetadata(params.googleDocId);
-  const googleDocId = pageInfo.googleDocId || params.googleDocId;
-  let doc = {},
-    error = null;
-  try {
-    doc = await getHTMLFromGoogleDocId(googleDocId);
-  } catch (e) {
-    error = e.message;
+  let path, edit;
+  let slug = "index";
+
+  if (params.path) {
+    if (params.path[params.path.length - 1] === "edit") {
+      params.path.pop();
+      edit = true;
+    }
+    slug = params.path.join("/");
+  }
+  const pageInfo = getPageMetadata(slug);
+  const googleDocId = pageInfo.googleDocId || params.path[0];
+
+  if (edit) {
+    return {
+      redirect: {
+        destination: `https://docs.google.com/document/d/${googleDocId}/edit`,
+      },
+    };
   }
 
-  doc = doc || {};
+  let doc = {},
+    error = null;
+
+  if (!googleDocId) {
+    error = "invalid_googledocid";
+  } else {
+    try {
+      doc = await getHTMLFromGoogleDocId(googleDocId);
+    } catch (e) {
+      error = e.message;
+      if (error === "not_published") {
+        return {
+          redirect: {
+            destination: `https://docs.google.com/document/d/${googleDocId}/edit`,
+          },
+        };
+      }
+    }
+  }
+
+  if (!doc) {
+    doc = {};
+    error = `Could not get the HTML for this Google Doc ID (${googleDocId})`;
+  }
 
   const page = {
     title: pageInfo.title || doc.title || null,
@@ -61,7 +101,7 @@ export async function getStaticProps({ params }) {
     image: pageInfo.image || null,
     body: doc.body || null,
     outline: doc.outline || null,
-    googleDocId,
+    googleDocId: googleDocId || null,
     error,
   };
 
@@ -149,6 +189,22 @@ export default function Home({ page }) {
     };
   });
 
+  let errorComponent = null;
+  if (error) {
+    switch (error) {
+      case "invalid_googledocid":
+        errorComponent = <ErrorInvalidDocId googleDocId={googleDocId} />;
+        break;
+      default:
+        errorComponent = (
+          <div className="p-8">
+            <h2>Error 😔</h2>
+            <p>{error}</p>
+          </div>
+        );
+    }
+  }
+
   return (
     <div className="w-full">
       <Head>
@@ -161,18 +217,13 @@ export default function Home({ page }) {
         <meta name="og:image" content={image || defaultValues.image} />
       </Head>
 
-      <main className="relative min-h-screen md:flex">
+      <main className="relative min-h-screen md:flex w-full overflow-hidden">
         {outline && (
           <Outline outline={outline} onChange={() => computeOffset()} />
         )}
         <div className="content px-4 mx-auto max-w-screen-md flex-1">
           {!body && !error && <p>Loading...</p>}
-          {error === "not_published" && (
-            <ErrorNotPublished googleDocId={googleDocId} />
-          )}
-          {error === "invalid_googledocid" && (
-            <ErrorInvalidDocId googleDocId={googleDocId} />
-          )}
+          {errorComponent}
           {body && (
             <div id="document">
               <RenderGoogleDoc html={body} />
